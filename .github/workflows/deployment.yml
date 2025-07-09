@@ -15,8 +15,8 @@ jobs:
 
       - name: Test application
         run: npm run test
-lint:
-  runs-on: ubuntu-latest
+  lint:
+    runs-on: ubuntu-latest
 
     steps:
       - name: Get the repository code
@@ -27,8 +27,8 @@ lint:
 
       - name: Lint application
         run: npm run lint
-build:
-  runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest
 
     steps:
       - name: Get the repository code
@@ -39,3 +39,5 @@ build:
 
       - name: Build application
         run: npm run build
+      - name: Deploy
+      run: echo Deploying
