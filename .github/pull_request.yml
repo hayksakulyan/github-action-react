@@ -1,6 +1,5 @@
 name: Print Pull Request Context
-
-on: workflow_dispatch # ruchnoi 
+on: workflow_dispatch 
 jobs:
   print:
     runs-on: ubuntu-latest
