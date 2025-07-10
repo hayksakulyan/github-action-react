@@ -2,7 +2,7 @@ name: Print Pull Request Context
 on:  #github actions WF triggers
   workflow_dispatch:
   pull_request:
-        types: [ opened, edited, reopened]
+    types: [opened, edited, reopened]
 jobs:
   print:
     runs-on: ubuntu-latest
