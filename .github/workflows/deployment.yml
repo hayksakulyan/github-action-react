@@ -45,11 +45,11 @@ jobs:
       - name: Lint application
         run: npm run lint
   build:
-    
+
     needs: [test, lint] #karoxanum enq zangvacov anenq es amen inchy 
     strategy:
         matrix:
-            node-version: [14, 16] #node version enq nshum
+            node-version: [23, 24] #node version enq nshum
             os: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
