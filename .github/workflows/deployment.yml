@@ -56,7 +56,7 @@ jobs:
       - name: Get the repository code
         uses: actions/checkout@v4
 
-      - name: Install Node 15
+      - name: Install Node JS
         uses: actions/setup-node@v4
         with:
             node-version: ${{ matrix.node-version}}
