@@ -45,11 +45,21 @@ jobs:
       - name: Lint application
         run: npm run lint
   build:
-    runs-on: ubuntu-latest
+    
     needs: [test, lint] #karoxanum enq zangvacov anenq es amen inchy 
+    strategy:
+        matrix:
+            node-version: [14, 16] #node version enq nshum
+            os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os}}
     steps:
       - name: Get the repository code
         uses: actions/checkout@v4
+
+      - name: Install Node 15
+        uses: actions/setup-node@v4
+        with:
+            node-version: ${{ matrix.node-version}}
 
       - name: Cache deps # кэширование зависимостей
         uses: actions/cache@v4
