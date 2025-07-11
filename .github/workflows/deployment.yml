@@ -51,7 +51,7 @@ jobs:
         matrix:
             node-version: [14, 16] #node version enq nshum
             os: [ubuntu-latest, windows-latest]
-    runs-on: ${{ matrix.os}}
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Get the repository code
         uses: actions/checkout@v4
