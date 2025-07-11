@@ -15,6 +15,12 @@ jobs:
       - name: Get the repository code
         uses: actions/checkout@v4
 
+      - name: Cache deps # кэширование зависимостей
+        uses: actions/cache@v4
+        with: 
+            path: ~/.npm
+            key: node-modules-${{hashFiles('**/package-lock.json')}}
+            
       - name: Install dependencies
         run: npm ci
 
@@ -26,7 +32,13 @@ jobs:
     steps:
       - name: Get the repository code
         uses: actions/checkout@v4
-
+    
+      - name: Cache deps # кэширование зависимостей
+        uses: actions/cache@v4
+        with: 
+            path: ~/.npm
+            key: node-modules-${{hashFiles('**/package-lock.json')}}
+        
       - name: Install dependencies
         run: npm ci
 
@@ -38,6 +50,12 @@ jobs:
     steps:
       - name: Get the repository code
         uses: actions/checkout@v4
+
+      - name: Cache deps # кэширование зависимостей
+        uses: actions/cache@v4
+        with: 
+            path: ~/.npm
+            key: node-modules-${{hashFiles('**/package-lock.json')}}
 
       - name: Install dependencies
         run: npm ci
