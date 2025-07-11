@@ -1,4 +1,4 @@
-name: Build
+name: Build & Deploy
 on: [push, workflow_dispatch]
 jobs:
     build:
@@ -13,5 +13,13 @@ jobs:
             - name: Upload Artifact
               uses: actions/upload-artifact@v4
               with:
-                path: build
+                path: build # es pathum gtnvox filery savea anum git
                 name: build-files
+deploy: 
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+        - name: Get build project
+          uses: actions/download-artifact@v4
+          with:
+            name: build-files
