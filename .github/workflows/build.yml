@@ -5,16 +5,13 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Get code
-            uses: actions/checkout@v4
-
-            - name: Install deps
-            run: npm ci
-
+              uses: actions/checkout@v4
+            - name: Install depе
+              run: npm ci
             - name: Build project
-            run: npm run build
-            
+              run: npm run build
             - name: Upload Artifact
-            uses: actions/upload-artifact@v4
-            with:
+              uses: actions/upload-artifact@v4
+              with:
                 path: build
                 name: build-files
