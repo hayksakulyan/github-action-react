@@ -4,7 +4,9 @@ on:
     push: 
         branches:
             - main
-    
+            paths-ignore: # es pathov ignora anum u ete
+                            # daje push anenq meka joby chi miana
+                - '.github/workflows/*'
 
 jobs:
   test:
