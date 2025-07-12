@@ -48,25 +48,35 @@ jobs:
         steps:
             - name: Get the repository code
               uses: actions/checkout@v4
-                
-            - name: Install Node JS
-              uses: actions/setup-node@v4
-              with:
-                  node-version: ${{ matrix.node-version}}
-                
+
             - name: Cache deps # кэширование зависимостей
               uses: actions/cache@v4
               with: 
                   path: ~/.npm
                   key: node-modules-${{hashFiles('**/package-lock.json')}}
-                
-            - name: Install dependencies
-              run: npm ci
-                
-            - name: Build application
-              run: npm run build
-            - name: Deploy
-              run: echo Deploying
-   
+
+            - name: Set up SSH
+              run: |
+                mkdir -p ~/.ssh
+                echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+                chmod 600 ~/.ssh/id_ed25519
+                      
+                echo "${{ secrets.SSH_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+                chmod 644 ~/.ssh/known_hosts
+
+            - name: Deploy via SSH
+              run: |
+                ssh -i ~/.ssh/id_ed25519 hayk@192.168.64.3 << 'EOF'
+                cd /home/hayk/github-action-react
+                if [ ! -d .git ]; then
+                    git clone https://github.com/hayksakulyan/github-action-react.git .
+                else
+                    git pull origin main
+                fi
+                  docker build -t github-action-react:latest .
+                  docker stop github-action-react || true
+                  docker rm github-action-react || true
+                  docker run -d --name github-action-react -p 3000:8080 github-action-react:latest
+                EOF
         
 
