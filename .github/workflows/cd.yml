@@ -43,7 +43,7 @@ jobs:
         strategy:
             matrix:
                 node-version: [23, 24] #node version enq nshum
-                os: [ubuntu-latest, windows-latest]
+                os: [ubuntu-latest]
         runs-on: ${{ matrix.os }}
         steps:
             - name: Get the repository code
