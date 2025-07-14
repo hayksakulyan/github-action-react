@@ -64,6 +64,7 @@ jobs:
                 echo "${{ secrets.SSH_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
                 chmod 644 ~/.ssh/known_hosts
 
+                
             - name: Deploy via SSH
               run: |
                 eval $(ssh-agent -s) && ssh-add ~/.ssh/id_ed25519
@@ -77,7 +78,7 @@ jobs:
                   docker build -t github-action-react:latest .
                   docker stop github-action-react || true
                   docker rm github-action-react || true
-                  docker run -d --name github-action-react -p 3000:8080 github-action-react:latest
+                  docker run -d --name github-action-react -p 3002:3000 github-action-react:latest
                 EOF
         
 
