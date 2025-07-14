@@ -48,7 +48,6 @@ jobs:
         steps:
             - name: Get the repository code
               uses: actions/checkout@v4
-
             - name: Cache deps # кэширование зависимостей
               uses: actions/cache@v4
               with: 
