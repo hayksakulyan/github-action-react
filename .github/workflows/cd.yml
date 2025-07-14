@@ -69,7 +69,12 @@ jobs:
 
             - name: Deploy via SSH
               run: |
-
+                mkdir -p ~/.ssh
+                echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+                chmod 600 ~/.ssh/id_ed25519
+                eval $(ssh-agent -s)
+                ssh-add ~/.ssh/id_ed25519
+                
                 ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_ed25519 hayk@192.168.64.3 << 'EOF'
                 cd /home/hayk/github-action-react
                 if [ ! -d .git ]; then
