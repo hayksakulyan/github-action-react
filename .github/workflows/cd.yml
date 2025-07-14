@@ -66,7 +66,6 @@ jobs:
                 # echo "${{ secrets.SSH_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
                 # chmod 644 ~/.ssh/known_hosts
 
-
             - name: Deploy via SSH
               run: |
                 mkdir -p ~/.ssh
@@ -74,7 +73,7 @@ jobs:
                 chmod 600 ~/.ssh/id_ed25519
                 eval $(ssh-agent -s)
                 ssh-add ~/.ssh/id_ed25519
-                
+
                 ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_ed25519 hayk@192.168.64.3 << 'EOF'
                 cd /home/hayk/github-action-react
                 if [ ! -d .git ]; then
