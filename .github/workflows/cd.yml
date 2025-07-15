@@ -55,8 +55,7 @@ jobs:
                   path: ~/.npm
                   key: node-modules-${{hashFiles('**/package-lock.json')}}
 
-            - name: Set up SSH
-            
+            - name: Set up SSH          
               run: |
                 mkdir -p ~/.ssh
                 echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
