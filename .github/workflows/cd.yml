@@ -70,7 +70,7 @@ jobs:
                 eval $(ssh-agent -s)
                 ssh-add ~/.ssh/id_ed25519
 
-                ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_ed25519 hayk@192.168.64.3 << 'EOF'
+                ssh -v -o StrictHostKeyChecking=no -i ~/.ssh/id_ed25519 hayk@192.168.64.3 << 'EOF'
                 cd /home/hayk/github-action-react
                 if [ ! -d .git ]; then
                     git clone https://github.com/hayksakulyan/github-action-react.git .
