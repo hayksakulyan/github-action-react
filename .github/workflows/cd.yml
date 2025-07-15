@@ -78,8 +78,7 @@ jobs:
                     git clone https://github.com/hayksakulyan/github-action-react.git .
                 else
                     git pull origin main
-                fi
-                
+                fi                
                   docker build -t github-action-react:latest .
                   docker stop github-action-react || true
                   docker rm github-action-react || true
