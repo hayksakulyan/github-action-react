@@ -46,7 +46,6 @@ jobs:
                 os: [ubuntu-latest]
         runs-on: ${{ matrix.os }}
         steps:
-
             - name: Get the repository code
               uses: actions/checkout@v4
             - name: Cache deps # кэширование зависимостей
