@@ -5,7 +5,7 @@ on:
             - main
 jobs:
     test:
-        runs-on: self-hosted
+        runs-on: ubuntu-latest
         steps:
             - name: Get the repository code
               uses: actions/checkout@v4
@@ -43,7 +43,7 @@ jobs:
         strategy:
             matrix:
                 node-version: [23, 24] #node version enq nshum
-                os: [ubuntu-latest]
+                os: [self-hosted]
         runs-on: ${{ matrix.os }}
         steps:
             - name: Get the repository code
