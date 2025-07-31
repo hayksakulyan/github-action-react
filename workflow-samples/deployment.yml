@@ -8,7 +8,7 @@ on:
             #- '.github/workflow/*'
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     
     steps:
       - name: Get the repository code
